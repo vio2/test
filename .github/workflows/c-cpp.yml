@@ -1,20 +1,19 @@
-name: C/C++ CI
+name: Build and Run C Program
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ main, master ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ main, master ]
+  workflow_dispatch:
 
 jobs:
-  build:
+  build-and-run:
     runs-on: macos-latest
+    
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
-    
-    - name: Install GCC
-      run: sudo apt-get update && sudo apt-get install -y gcc
     
     - name: Compile main.c
       run: gcc main.c -o main
