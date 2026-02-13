@@ -1,0 +1,22 @@
+name: Build and Run C Program
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build-and-run:
+    runs-on: macos-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    
+    - name: Compile main.c
+      run: gcc main.c -o main
+    
+    - name: Run program
+      run: ./main
